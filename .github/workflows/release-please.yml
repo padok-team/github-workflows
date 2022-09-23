@@ -1,0 +1,16 @@
+on:
+  workflow_call:
+    inputs:
+      release-type:
+        required: true
+        type: string
+        default: terraform-module
+name: release-please
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: ${{ inputs.release-type }}
+          default-branch: main
