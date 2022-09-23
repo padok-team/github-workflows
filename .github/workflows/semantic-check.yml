@@ -1,6 +1,6 @@
 on:
   workflow_call:
-name: commitlint
+name: semantic-check
 jobs:
   commitlint:
     runs-on: ubuntu-latest
