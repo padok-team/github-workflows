@@ -2,6 +2,10 @@ on:
   workflow_call:
 name: semantic-check
 jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello world!"
   commitlint:
     runs-on: ubuntu-latest
     steps:
