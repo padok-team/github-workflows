@@ -1,10 +1,18 @@
 on:
   workflow_call:
+    inputs:
+      workdir:
+        required: false
+        type: string
+        default: .
 name: terraform-lint
 jobs:
   terraform-lint:
     runs-on: ubuntu-latest
     name: check formatting and syntax
+    defaults:
+      run:
+        working-directory: ./${{ inputs.workdir }}
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -18,6 +26,7 @@ jobs:
           export PATH=$PATH:$CUSTOMBIN
           $CUSTOMBIN/tfswitch -b $CUSTOMBIN/terraform
           terraform -v
+        working-directory: .
       - name: tf fmt
         run: terraform fmt -check -recursive
       - name: tf validate
