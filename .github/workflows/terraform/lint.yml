@@ -1,0 +1,41 @@
+on:
+  workflow_call:
+name: terraform-lint
+jobs:
+  terraform-lint:
+    runs-on: ubuntu-latest
+    name: check formatting and update docs
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: tfswitch
+        run: |
+          wget https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh
+          chmod 755 install.sh
+          ./install.sh -b `pwd`/.bin
+          rm install.sh
+          CUSTOMBIN=`pwd`/.bin
+          export PATH=$PATH:$CUSTOMBIN
+          $CUSTOMBIN/tfswitch -b $CUSTOMBIN/terraform
+          terraform -v
+      - name: tf fmt
+        run: terraform fmt -check -recursive
+      - name: tf validate
+        run: terraform validate
+      - name: tflint (setup)
+        uses: terraform-linters/setup-tflint@v2
+      - name: tflint (run)
+        run: |
+          tflint --init
+          tflint
+      - name: terraform-docs
+        uses: terraform-docs/gh-actions@v1.0.0
+        with:
+          working-dir: .
+          output-file: README.md
+          output-method: inject
+          git-commit-message: "docs: update terraform docs"
+          git-push: "true"
