@@ -1,0 +1,18 @@
+on:
+  workflow_call:
+name: terraform-docs
+jobs:
+  terraform-docs:
+    runs-on: ubuntu-latest
+    name: update docs
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: terraform-docs
+        uses: terraform-docs/gh-actions@v1.0.0
+        with:
+          working-dir: .
+          output-file: README.md
+          output-method: inject
+          git-commit-message: "docs: update terraform docs"
+          git-push: "true"
