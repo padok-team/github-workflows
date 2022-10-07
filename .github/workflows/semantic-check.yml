@@ -2,10 +2,6 @@ on:
   workflow_call:
 name: semantic-check
 jobs:
-  hello:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Hello world!"
   commitlint:
     runs-on: ubuntu-latest
     steps:
@@ -18,6 +14,6 @@ jobs:
       - name: commitlint (install)
         run: |
           npm install -g @commitlint/cli @commitlint/config-conventional
-          echo 'module.exports = {extends: [\"@commitlint/config-conventional\"]}' > commitlint.config.js
+          echo 'module.exports = {extends: ["@commitlint/config-conventional"]}' > commitlint.config.js
       - name: commitlint (run)
         run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
