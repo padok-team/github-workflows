@@ -6,12 +6,12 @@ on:
         type: string
         default: .
 name: terraform-pr
-defaults:
-  run:
-    working-directory: ${{ inputs.workdir }}
 jobs:
   terraform-lint:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.workdir }}
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -39,6 +39,9 @@ jobs:
           tflint
   terraform-security:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.workdir }}
     steps:
       - name: checkout
         uses: actions/checkout@v3
