@@ -5,4 +5,4 @@ on:
 name: pull-request
 jobs:
   semantic-check:
-    uses: ./.github/workflows/semantic-check.yml@main
+    uses: ./.github/workflows/semantic-check.yml
