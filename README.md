@@ -6,10 +6,10 @@ The following [reusable workflows](https://docs.github.com/en/actions/using-work
 
 | Name | Description | Must have |
 | ---- | ----------- | --------- |
-| [`release`](./.github/workflows/release.yml) | Configure [ReleasePlease](https://www.notion.so/How-to-configure-Release-Please-9f2c511fe22d4fd29c66cebe41b57a1f) to automate GitHub release creation | ⭐ |
-| [`semantic-check`](./.github/workflows/semantic-check.yml) | Check that pull requests follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) |
-| [`terraform-docs`](./.github/workflows/terraform-docs.yml) | Update Terraform module documentation using `terraform-docs` |
-| [`terraform-quality`](./github/../.github/workflows/terraform-quality.yml) | Run several linter and static analysis tools on Terraform code | ⭐ |
+| [`release`](.github/workflows/release.yml) | Configure [Release Please](https://www.notion.so/How-to-configure-Release-Please-9f2c511fe22d4fd29c66cebe41b57a1f) to automate GitHub release creation | ⭐ |
+| [`semantic-check`](.github/workflows/semantic-check.yml) | Check that pull requests follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) |
+| [`terraform-docs`](.github/workflows/terraform-docs.yml) | Update Terraform module documentation using `terraform-docs` |
+| [`terraform-quality`](.github/workflows/terraform-quality.yml) | Run several linter and static analysis tools on Terraform code | ⭐ |
 
 ## Workflows Design
 
