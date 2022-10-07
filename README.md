@@ -2,8 +2,9 @@
 
 Shared GitHub workflows, to be referenced by other Padok projects.
 
-The following [reusable workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows#creating-a-reusable-workflow) are available in [`.github/workflows`](./.github/workflows/):
+The following [reusable workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows) are available in [`.github/workflows`](.github/workflows/):
 
+<!-- prettier-ignore -->
 | Name | Description | Must have |
 | ---- | ----------- | --------- |
 | [`release`](.github/workflows/release.yml) | Configure [Release Please](https://www.notion.so/How-to-configure-Release-Please-9f2c511fe22d4fd29c66cebe41b57a1f) to automate GitHub release creation | ⭐ |
@@ -11,7 +12,7 @@ The following [reusable workflows](https://docs.github.com/en/actions/using-work
 | [`terraform-docs`](.github/workflows/terraform-docs.yml) | Update Terraform module documentation using `terraform-docs` |
 | [`terraform-quality`](.github/workflows/terraform-quality.yml) | Run several linter and static analysis tools on Terraform code | ⭐ |
 
-## Workflows Design
+## Workflow Designs
 
 ### `terraform-quality` workflow
 
@@ -25,8 +26,8 @@ There are several tools to ensure that Terraform code is secure and follows best
 
 The following tools were considered but ultimately not included:
 
-- [`tfsec`](https://github.com/aquasecurity/tfsec) is redondant with `checkov`, and from Padok's experience, the later is more reliable
-- [`terrascan`](https://github.com/tenable/terrascan) has not been tested yet by Padok
+- [`tfsec`](https://github.com/aquasecurity/tfsec) is redundant with `checkov`, and from Padok's experience, the latter is more reliable
+- [`terrascan`](https://github.com/tenable/terrascan) has not been tested by Padok yet
 - [`terraform docs`](https://www.terraform.io/docs/commands/docs/index.html) is delegated to another workflow, since it could add a commit to the pull request
 
 > Feel free to suggest other tools to add to this workflow!
