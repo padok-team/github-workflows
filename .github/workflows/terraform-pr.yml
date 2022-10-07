@@ -5,14 +5,13 @@ on:
         required: false
         type: string
         default: .
-name: terraform-lint
+name: terraform-pr
+defaults:
+  run:
+    working-directory: ${{ inputs.workdir }}
 jobs:
   terraform-lint:
     runs-on: ubuntu-latest
-    name: check formatting and syntax
-    defaults:
-      run:
-        working-directory: ./${{ inputs.workdir }}
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -20,15 +19,16 @@ jobs:
         run: |
           wget https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh
           chmod 755 install.sh
-          ./install.sh -b `pwd`/.bin `pwd`/.bin 0.13.1288 # Last arg is the desired tfswitch version
+          ./install.sh -b `pwd`/.bin 0.13.1288 # Last arg is the desired tfswitch version
           rm install.sh
           CUSTOMBIN=`pwd`/.bin
           export PATH=$PATH:$CUSTOMBIN
           $CUSTOMBIN/tfswitch -b $CUSTOMBIN/terraform
           terraform -v
-        working-directory: .
       - name: tf fmt
         run: terraform fmt -check -recursive
+      - name: tf init
+        run: terraform init -backend=false
       - name: tf validate
         run: terraform validate
       - name: tflint (setup)
@@ -37,3 +37,16 @@ jobs:
         run: |
           tflint --init
           tflint
+  terraform-security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: ${{ inputs.workdir }}
+          framework: terraform
+          download_external_modules: true
+          quiet: true
+      
