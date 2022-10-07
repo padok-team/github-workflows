@@ -19,18 +19,16 @@ jobs:
         run: |
           wget https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh
           chmod 755 install.sh
-          ./install.sh -b `pwd`/.bin 0.13.1288 # Last arg is the desired tfswitch version
+          ./install.sh 0.13.1288 # Last arg is the desired tfswitch version
           rm install.sh
-          CUSTOMBIN=`pwd`/.bin
-          export PATH=$PATH:$CUSTOMBIN
-          $CUSTOMBIN/tfswitch -b $CUSTOMBIN/terraform
-          terraform -v
+          .bin/tfswitch -b .bin/terraform
+          .bin/terraform -v
       - name: tf fmt
-        run: terraform fmt -check -recursive
+        run: .bin/terraform fmt -check -recursive
       - name: tf init
-        run: terraform init -backend=false
+        run: .bin/terraform init -backend=false
       - name: tf validate
-        run: terraform validate
+        run: .bin/terraform validate
       - name: tflint (setup)
         uses: terraform-linters/setup-tflint@v2
       - name: tflint (run)
