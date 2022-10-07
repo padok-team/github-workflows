@@ -19,7 +19,7 @@ jobs:
         run: |
           wget https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh
           chmod 755 install.sh
-          ./install.sh 0.13.1288 # Last arg is the desired tfswitch version
+          ./install.sh -b ./.bin 0.13.1288 # Last arg is the desired tfswitch version
           rm install.sh
           .bin/tfswitch -b .bin/terraform
           .bin/terraform -v
