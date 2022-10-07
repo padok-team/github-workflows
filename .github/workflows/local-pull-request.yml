@@ -1,0 +1,8 @@
+on:
+  pull_request:
+    branches:
+      - main
+name: pull-request
+jobs:
+  semantic-check:
+    uses: ./.github/workflows/semantic-check.yml@main
