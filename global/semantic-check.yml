@@ -1,8 +1,9 @@
 on:
   pull_request:
     branches:
-      - main
+      - main # your trunk branch
+
 name: semantic-check
 jobs:
   semantic-check:
-    uses: padok-team/github-workflows/.github/workflows/semantic-check.yml@main
+    uses: padok-team/github-workflows/.github/workflows/semantic-check.yml@v1

@@ -16,22 +16,26 @@ The following [reusable workflows](https://docs.github.com/en/actions/using-work
 
 To use these workflows in your project, copy files from the folders listed below, and paste them in the `.github/workflows/` folder in your own repo.
 
-- `global`: `release`, `semantic-check`
-  - Sets up Release Please and semantic-check, for standardized commits and automated releases
-- `terraform`: `terraform-quality`, `terraform-docs`
-  - Sets up automated Terraform code quality and security checks, as well as `terraform-docs` for automated documentation updating
+- [`global`](global/): for all your projects
+- [`terraform`](terraform/): useful for Terraform modules and starters
 
 Your repo should have the following structure:
 
 ```
-.github
-| workflows
-| | terraform-quality.yml
-| | terraform-docs.yml
-| | ... (other workflows)
-main.tf
-README.md
-... (other files)
+.
+├── .github
+│   ├── CODEOWNERS
+│   └── workflows
+│       ├── release.yml
+│       ├── semantic-check.yml
+│       ├── terraform-docs.yml
+│       └── terraform-quality.yml
+├── .gitignore
+├── LICENSE
+├── main.tf
+├── README.md
+├── renovate.json
+└── ... (other files)
 ```
 
 ## Workflow Designs
