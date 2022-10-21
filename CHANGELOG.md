@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/padok-team/github-workflows/compare/v1.0.0...v1.0.1) (2022-10-21)
+
+
+### Bug Fixes
+
+* **release:** add id to release step ([a8f5221](https://github.com/padok-team/github-workflows/commit/a8f522192c62676c1104a3f92de831cc40ebc85b))
+
 ## 1.0.0 (2022-10-21)
 
 
