@@ -16,13 +16,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@v3
+        id: release
         with:
           release-type: ${{ inputs.release-type }}
           default-branch: main
       # See https://github.com/google-github-actions/release-please-action#creating-majorminor-tags
       - uses: actions/checkout@v3
         if: inputs.update-major-minor-tags
-      - name: tag major and minor versions
+      - name: Tag major and minor versions
         if: inputs.update-major-minor-tags && steps.release.outputs.release_created
         run: |
           git config user.name github-actions[bot]
