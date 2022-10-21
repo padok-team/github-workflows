@@ -1,0 +1,9 @@
+on:
+  push:
+    branches:
+      - main # your trunk branch
+
+name: release
+jobs:
+  release:
+    uses: padok-team/github-workflows/.github/workflows/release.yml@v1

@@ -1,0 +1,9 @@
+on:
+  pull_request:
+    branches:
+      - main # your trunk branch
+
+name: terraform-quality
+jobs:
+  terraform-quality:
+    uses: padok-team/github-workflows/.github/workflows/terraform-quality.yml@v1

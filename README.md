@@ -12,6 +12,32 @@ The following [reusable workflows](https://docs.github.com/en/actions/using-work
 | [`terraform-docs`](.github/workflows/terraform-docs.yml) | Update Terraform module documentation using `terraform-docs` |
 | [`terraform-quality`](.github/workflows/terraform-quality.yml) | Run several linter and static analysis tools on Terraform code | ⭐ |
 
+## Usage
+
+To use these workflows in your project, copy files from the folders listed below, and paste them in the `.github/workflows/` folder in your own repo.
+
+- [`global`](global/): for all your projects
+- [`terraform`](terraform/): useful for Terraform modules and starters
+
+Your repo should have the following structure:
+
+```
+.
+├── .github
+│   ├── CODEOWNERS
+│   └── workflows
+│       ├── release.yml
+│       ├── semantic-check.yml
+│       ├── terraform-docs.yml
+│       └── terraform-quality.yml
+├── .gitignore
+├── LICENSE
+├── main.tf
+├── README.md
+├── renovate.json
+└── ... (other files)
+```
+
 ## Workflow Designs
 
 ### `terraform-quality` workflow
