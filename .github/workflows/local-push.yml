@@ -2,9 +2,11 @@ on:
   push:
     branches:
       - main
+
 name: push-to-main
 jobs:
   release:
     uses: ./.github/workflows/release.yml
     with:
       release-type: simple
+      update-major-minor-tags: true
