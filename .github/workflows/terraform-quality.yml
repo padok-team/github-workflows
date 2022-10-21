@@ -5,6 +5,7 @@ on:
         required: false
         type: string
         default: .
+
 name: terraform-quality
 jobs:
   terraform-lint:
