@@ -5,6 +5,10 @@ on:
         required: true
         type: string
         default: terraform-module
+      update-major-minor-tags:
+        required: false
+        type: boolean
+        default: false
 name: release
 jobs:
   release-please:
@@ -14,3 +18,19 @@ jobs:
         with:
           release-type: ${{ inputs.release-type }}
           default-branch: main
+      - uses: actions/checkout@v2
+        if: inputs.update-major-minor-tags
+      - name: tag major and minor versions
+        if: inputs.update-major-minor-tags && steps.release.outputs.release_created
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git remote add gh-token "https://${{ secrets.GITHUB_TOKEN }}@github.com/google-github-actions/release-please-action.git"
+          git tag -d v${{ steps.release.outputs.major }} || true
+          git tag -d v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }} || true
+          git push origin :v${{ steps.release.outputs.major }} || true
+          git push origin :v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }} || true
+          git tag -a v${{ steps.release.outputs.major }} -m "Release v${{ steps.release.outputs.major }}"
+          git tag -a v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }} -m "Release v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}"
+          git push origin v${{ steps.release.outputs.major }}
+          git push origin v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}
