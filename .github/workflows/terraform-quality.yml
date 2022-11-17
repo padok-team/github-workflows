@@ -31,7 +31,7 @@ jobs:
       - name: tf validate
         run: .bin/terraform validate
       - name: tflint (setup)
-        uses: terraform-linters/setup-tflint@v2
+        uses: terraform-linters/setup-tflint@v3
       - name: tflint (run)
         run: |
           tflint --init
