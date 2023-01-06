@@ -51,4 +51,5 @@ jobs:
           framework: terraform
           download_external_modules: true
           quiet: true
+          baseline: ${{ inputs.workdir }}/.checkov.baseline
       
