@@ -5,6 +5,10 @@ on:
         required: false
         type: string
         default: .
+      checkov_enabled:
+        required: false
+        type: boolean
+        default: true
 
 name: terraform-quality
 jobs:
@@ -38,6 +42,7 @@ jobs:
           tflint
   terraform-security:
     runs-on: ubuntu-latest
+    if: inputs.checkov_enabled
     defaults:
       run:
         working-directory: ${{ inputs.workdir }}
@@ -51,4 +56,3 @@ jobs:
           framework: terraform
           download_external_modules: true
           quiet: true
-      
