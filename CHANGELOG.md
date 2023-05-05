@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/padok-team/github-workflows/compare/v1.0.1...v1.1.0) (2023-05-05)
+
+
+### Features
+
+* introduce workflow input to skip checkov ([0207e23](https://github.com/padok-team/github-workflows/commit/0207e234fda0462142a90e17d57bce86ec48d854))
+
 ## [1.0.1](https://github.com/padok-team/github-workflows/compare/v1.0.0...v1.0.1) (2022-10-21)
 
 
