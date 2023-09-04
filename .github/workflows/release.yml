@@ -21,7 +21,7 @@ jobs:
           release-type: ${{ inputs.release-type }}
           default-branch: main
       # See https://github.com/google-github-actions/release-please-action#creating-majorminor-tags
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
         if: inputs.update-major-minor-tags
       - name: Tag major and minor versions
         if: inputs.update-major-minor-tags && steps.release.outputs.release_created
