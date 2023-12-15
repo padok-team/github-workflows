@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.2](https://github.com/padok-team/github-workflows/compare/v1.1.1...v1.1.2) (2023-12-15)
+
+
+### Bug Fixes
+
+* **release-please:** remove deprecated default-branch options ([a88daf8](https://github.com/padok-team/github-workflows/commit/a88daf8659416e9a74927a51a5c3c40e876819a9))
+* **semantic-check:** use lts node version ([8b23c48](https://github.com/padok-team/github-workflows/commit/8b23c4810a8f1f4df91ad8b1e749d2117f468a90))
+
 ## [1.1.1](https://github.com/padok-team/github-workflows/compare/v1.1.0...v1.1.1) (2023-12-15)
 
 
