@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/padok-team/github-workflows/compare/v1.1.0...v1.1.1) (2023-12-15)
+
+
+### Bug Fixes
+
+* use a token to avoid rate limit ([74a426a](https://github.com/padok-team/github-workflows/commit/74a426a3ef29a0ade0cbacdaff9a6ae47042d29d))
+
 ## [1.1.0](https://github.com/padok-team/github-workflows/compare/v1.0.1...v1.1.0) (2023-05-05)
 
 
