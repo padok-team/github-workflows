@@ -11,7 +11,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 'lts/*'
       - name: commitlint (install)
         run: |
           npm install -g @commitlint/cli @commitlint/config-conventional
