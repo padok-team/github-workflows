@@ -36,7 +36,12 @@ jobs:
         run: .bin/terraform validate
       - name: tflint (setup)
         uses: terraform-linters/setup-tflint@v4
+        with:
+          github_token: ${{ github.token }}
       - name: tflint (run)
+        env:
+          # https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/plugins.md#avoiding-rate-limiting
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           tflint --init
           tflint
