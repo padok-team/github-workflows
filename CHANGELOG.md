@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/padok-team/github-workflows/compare/v1.1.2...v1.2.0) (2024-04-12)
+
+
+### Features
+
+* **terraform-quality:** add the option to setup baseline for checkov ([eed2d28](https://github.com/padok-team/github-workflows/commit/eed2d287b30b5730b6dbca3ff72813b4b3137352))
+* **terraform-quality:** add the option to setup skip paths for checkov ([96fd381](https://github.com/padok-team/github-workflows/commit/96fd381f58edc106ec1c46a5065053f64a435dae))
+
 ## [1.1.2](https://github.com/padok-team/github-workflows/compare/v1.1.1...v1.1.2) (2023-12-15)
 
 
