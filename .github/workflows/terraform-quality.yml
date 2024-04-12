@@ -12,6 +12,9 @@ on:
       checkov_skip_path:
         required: false
         type: string
+      checkov_baseline:
+        required: false
+        type: string
 
 name: terraform-quality
 jobs:
@@ -65,4 +68,5 @@ jobs:
           download_external_modules: true
           quiet: true
           skip_path: ${{ inputs.checkov_skip_path }}
+          baseline: ${{ inputs.checkov_baseline }}
 
