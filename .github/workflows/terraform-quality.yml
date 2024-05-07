@@ -1,22 +1,6 @@
-on:
-  workflow_call:
-    inputs:
-      workdir:
-        required: false
-        type: string
-        default: .
-      checkov_enabled:
-        required: false
-        type: boolean
-        default: true
-      checkov_skip_path:
-        required: false
-        type: string
-      checkov_baseline:
-        required: false
-        type: string
+name: Terraform quality
 
-name: terraform-quality
+on: push
 jobs:
   terraform-lint:
     runs-on: ubuntu-latest
@@ -30,43 +14,7 @@ jobs:
         run: |
           wget https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh
           chmod 755 install.sh
-          ./install.sh -b ./.bin 0.13.1288 # Last arg is the desired tfswitch version
+          ./install.sh -b ./.bin v1.1.1 # Last arg is the desired tfswitch version
           rm install.sh
           .bin/tfswitch -b .bin/terraform
           .bin/terraform -v
-      - name: tf fmt
-        run: .bin/terraform fmt -check -recursive
-      - name: tf init
-        run: .bin/terraform init -backend=false
-      - name: tf validate
-        run: .bin/terraform validate
-      - name: tflint (setup)
-        uses: terraform-linters/setup-tflint@19a52fbac37dacb22a09518e4ef6ee234f2d4987 # v4
-        with:
-          github_token: ${{ github.token }}
-      - name: tflint (run)
-        env:
-          # https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/plugins.md#avoiding-rate-limiting
-          GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          tflint --init
-          tflint
-  terraform-security:
-    runs-on: ubuntu-latest
-    if: inputs.checkov_enabled
-    defaults:
-      run:
-        working-directory: ${{ inputs.workdir }}
-    steps:
-      - name: checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-      - name: checkov
-        uses: bridgecrewio/checkov-action@master
-        with:
-          directory: ${{ inputs.workdir }}
-          framework: terraform
-          download_external_modules: true
-          quiet: true
-          skip_path: ${{ inputs.checkov_skip_path }}
-          baseline: ${{ inputs.checkov_baseline }}
-
