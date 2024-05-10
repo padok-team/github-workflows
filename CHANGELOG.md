@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/padok-team/github-workflows/compare/v1.3.0...v1.3.1) (2024-05-10)
+
+
+### Bug Fixes
+
+* **deps:** update actions/checkout digest to 0ad4b8f ([41d9f67](https://github.com/padok-team/github-workflows/commit/41d9f67fbcdf013e416e300e080c1cfe674d3eeb))
+
 ## [1.3.0](https://github.com/padok-team/github-workflows/compare/v1.2.0...v1.3.0) (2024-05-10)
 
 
