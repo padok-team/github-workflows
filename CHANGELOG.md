@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/padok-team/github-workflows/compare/v1.2.0...v1.3.0) (2024-05-10)
+
+
+### Features
+
+* **terraform-quality:** update tfswitch version ([8f900ea](https://github.com/padok-team/github-workflows/commit/8f900eac342aef3cfb62758a8e03ee42321c771b))
+
 ## [1.2.0](https://github.com/padok-team/github-workflows/compare/v1.1.2...v1.2.0) (2024-04-12)
 
 
