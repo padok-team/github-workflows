@@ -1,0 +1,66 @@
+on:
+  workflow_call:
+    inputs:
+      workdir:
+        required: false
+        type: string
+        default: .
+      checkov_enabled:
+        required: false
+        type: boolean
+        default: true
+      checkov_skip_path:
+        required: false
+        type: string
+      checkov_baseline:
+        required: false
+        type: string
+
+name: terragrunt-quality
+jobs:
+  terragrunt-lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.workdir }}
+    env:
+      GITHUB_ACTIONS: true
+    steps:
+      - name: checkout
+        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
+      - name: Setup TF and TG (via tenv)
+        run: |
+          VERSION=$(curl --silent https://api.github.com/repos/tofuutils/tenv/releases/latest | jq -r .tag_name)
+          curl -O -L "https://github.com/tofuutils/tenv/releases/latest/download/tenv_${VERSION}_amd64.deb"
+          sudo dpkg -i "tenv_${VERSION}_amd64.deb"
+          tenv terraform install latest
+          tenv terragrunt install latest
+          tenv update-path
+      - name: terraform fmt of directory modules
+        run: terraform fmt -check -recursive -diff modules
+      - name: terragrunt fmt of directory layers
+        run: terragrunt hclfmt --terragrunt-check --terragrunt-diff layers
+      - name: guacamole code quality checks
+        id: guacamole
+        uses: padok-team/guacamole-action@v1.3.0
+        with:
+          path: ${{ inputs.workdir }}
+          verbose: true
+  terragrunt-security:
+    runs-on: ubuntu-latest
+    if: inputs.checkov_enabled
+    defaults:
+      run:
+        working-directory: ${{ inputs.workdir }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
+      - name: checkov of modules
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: ${{ inputs.workdir }}/modules
+          framework: terraform
+          download_external_modules: false
+          quiet: true
+          skip_path: ${{ inputs.checkov_skip_path }}
+          baseline: ${{ inputs.checkov_baseline }}
