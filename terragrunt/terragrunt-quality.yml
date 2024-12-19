@@ -1,0 +1,10 @@
+on:
+  pull_request:
+    branches:
+      - main
+name: iac-quality
+jobs:
+  terragrunt-quality:
+    uses: padok-team/github-workflows/.github/workflows/terragrunt-quality.yml@main
+    with:
+      workdir: starters/terraform

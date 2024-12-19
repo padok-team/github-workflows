@@ -17,7 +17,8 @@ The following [reusable workflows](https://docs.github.com/en/actions/using-work
 To use these workflows in your project, copy files from the folders listed below, and paste them in the `.github/workflows/` folder in your own repo.
 
 - [`global`](global/): for all your projects
-- [`terraform`](terraform/): useful for Terraform modules and starters
+- [`terraform`](terraform/): useful for Terraform modules
+- [`terragrunt`](terragrunt/) : Use for Terragrunt project and terraform modules
 
 Your repo should have the following structure:
 
@@ -39,6 +40,14 @@ Your repo should have the following structure:
 ```
 
 ## Workflow Designs
+
+### `terragrunt-quality` workflow
+
+- [`tenv`](https://github.com/tofuutils/tenv)make sure that the correct version of Terraform and terragrunt is used
+- [`terraform fmt`](https://www.terraform.io/docs/cli/commands/fmt.html) to check the basic formatting of Terraform code
+- [`terragrunt hclfmt`](https://terragrunt.gruntwork.io/docs/reference/cli-options/#hclfmt) to check the formatting of terragrunt hcl files
+- [`guacamole`](https://github.com/padok-team/guacamole) check the code quality
+- [`checkov`](https://www.checkov.io/) to check for security issues
 
 ### `terraform-quality` workflow
 
