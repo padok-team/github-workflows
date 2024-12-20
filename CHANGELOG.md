@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.0](https://github.com/padok-team/github-workflows/compare/v1.4.0...v1.5.0) (2024-12-20)
+
+
+### Features
+
+* **tf-quality:** fix version for checkov-action ([14b097d](https://github.com/padok-team/github-workflows/commit/14b097d9f6cfa2d409c82753e56294f1f659a677))
+
+
+### Bug Fixes
+
+* .github/workflows/terraform-quality.yml ([14aa612](https://github.com/padok-team/github-workflows/commit/14aa6123fe9ac41519e83eb8561d58112cfcaae4))
+
 ## [1.4.0](https://github.com/padok-team/github-workflows/compare/v1.3.1...v1.4.0) (2024-12-20)
 
 
