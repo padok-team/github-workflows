@@ -11,6 +11,7 @@ The following [reusable workflows](https://docs.github.com/en/actions/using-work
 | [`semantic-check`](.github/workflows/semantic-check.yml) | Check that pull requests follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) |
 | [`terraform-docs`](.github/workflows/terraform-docs.yml) | Update Terraform module documentation using `terraform-docs` |
 | [`terraform-quality`](.github/workflows/terraform-quality.yml) | Run several linter and static analysis tools on Terraform code | ⭐ |
+| [`terragrunt-quality`](.github/workflows/terragrunt-quality.yml) | Run several linter and static analysis tools on Terragrunt code | ⭐ |
 
 ## Usage
 
