@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/padok-team/github-workflows/compare/v1.3.1...v1.4.0) (2024-12-20)
+
+
+### Features
+
+* **terragrunt:** checks ([763ebe5](https://github.com/padok-team/github-workflows/commit/763ebe594e3f10e9da465d2833c46dc9aa990904))
+
 ## [1.3.1](https://github.com/padok-team/github-workflows/compare/v1.3.0...v1.3.1) (2024-05-10)
 
 
