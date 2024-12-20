@@ -61,7 +61,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
       - name: checkov
-        uses: bridgecrewio/checkov-action@63fbdab56e22a18bbc16fdc5208c0d30a71f3a24 # v12.2937.0
+        # lock checkov image version to v3.2.340: newer version are buggy (`TypeError: int object is not subscriptable`)
+        uses: bridgecrewio/checkov-action@a2b0083e03f46abd10e1c6d3e48a896dad73499e # master
         with:
           directory: ${{ inputs.workdir }}
           framework: terraform
