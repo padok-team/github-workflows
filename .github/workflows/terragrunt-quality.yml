@@ -42,7 +42,7 @@ jobs:
         run: terragrunt hclfmt --terragrunt-check --terragrunt-diff layers
       - name: guacamole code quality checks
         id: guacamole
-        uses: padok-team/guacamole-action@v1.3.0
+        uses: padok-team/guacamole-action@1cd4678ecf3f391ec25980769f1565ddd5cc6a4c # v1.3.1
         with:
           path: ${{ inputs.workdir }}
           verbose: true
