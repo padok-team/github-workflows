@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/padok-team/github-workflows/compare/v1.5.0...v1.5.1) (2025-01-08)
+
+
+### Bug Fixes
+
+* **deps:** update padok-team/guacamole-action action to v1.3.1 ([e097cb0](https://github.com/padok-team/github-workflows/commit/e097cb01d46515094a9b0b1a167beac6387ae5cf))
+
 ## [1.5.0](https://github.com/padok-team/github-workflows/compare/v1.4.0...v1.5.0) (2024-12-20)
 
 
