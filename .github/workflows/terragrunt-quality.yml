@@ -5,6 +5,14 @@ on:
         required: false
         type: string
         default: .
+      modules_path:
+        required: false
+        type: string
+        default: modules
+      layers_path:
+        required: false
+        type: string
+        default: layers
       checkov_enabled:
         required: false
         type: boolean
@@ -36,10 +44,10 @@ jobs:
           tenv terraform install latest
           tenv terragrunt install latest
           tenv update-path
-      - name: terraform fmt of directory modules
-        run: terraform fmt -check -recursive -diff modules
-      - name: terragrunt fmt of directory layers
-        run: terragrunt hclfmt --terragrunt-check --terragrunt-diff layers
+      - name: terraform fmt of directory ${{ inputs.modules_path }}
+        run: terraform fmt -check -recursive -diff ${{ inputs.modules_path }}
+      - name: terragrunt fmt of directory ${{ inputs.layers_path }}
+        run: terragrunt hclfmt --terragrunt-check --terragrunt-diff ${{ inputs.layers_path }}
       - name: guacamole code quality checks
         id: guacamole
         uses: padok-team/guacamole-action@1cd4678ecf3f391ec25980769f1565ddd5cc6a4c # v1.3.1
@@ -55,10 +63,10 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
-      - name: checkov of modules
+      - name: checkov of ${{ inputs.modules_path }}
         uses: bridgecrewio/checkov-action@master
         with:
-          directory: ${{ inputs.workdir }}/modules
+          directory: ${{ inputs.modules_path }}
           framework: terraform
           download_external_modules: false
           quiet: true
