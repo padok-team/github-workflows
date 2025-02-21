@@ -9,10 +9,6 @@ on:
         required: false
         type: string
         default: modules
-      layers_path:
-        required: false
-        type: string
-        default: layers
       checkov_enabled:
         required: false
         type: boolean
@@ -43,8 +39,8 @@ jobs:
           tenv update-path
       - name: terraform fmt of directory ${{ inputs.modules_path }}
         run: terraform fmt -check -recursive -diff ${{ inputs.modules_path }}
-      - name: terragrunt fmt of directory ${{ inputs.layers_path }}
-        run: terragrunt hclfmt --terragrunt-check --terragrunt-diff ${{ inputs.layers_path }}
+      - name: terragrunt fmt of directory ${{ inputs.workdir }}
+        run: terragrunt hclfmt --check --diff ${{ inputs.workdir }}
       - name: guacamole code quality checks
         id: guacamole
         uses: padok-team/guacamole-action@1cd4678ecf3f391ec25980769f1565ddd5cc6a4c # v1.3.1
