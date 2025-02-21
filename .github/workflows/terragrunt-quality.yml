@@ -28,9 +28,6 @@ name: terragrunt-quality
 jobs:
   terragrunt-lint:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ${{ inputs.workdir }}
     env:
       GITHUB_ACTIONS: true
     steps:
@@ -57,9 +54,6 @@ jobs:
   terragrunt-security:
     runs-on: ubuntu-latest
     if: inputs.checkov_enabled
-    defaults:
-      run:
-        working-directory: ${{ inputs.workdir }}
     steps:
       - name: checkout
         uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
