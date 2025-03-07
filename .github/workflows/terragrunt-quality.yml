@@ -34,8 +34,10 @@ jobs:
           VERSION=$(curl --silent https://api.github.com/repos/tofuutils/tenv/releases/latest | jq -r .tag_name)
           curl -O -L "https://github.com/tofuutils/tenv/releases/latest/download/tenv_${VERSION}_amd64.deb"
           sudo dpkg -i "tenv_${VERSION}_amd64.deb"
-          tenv terraform install latest
-          tenv terragrunt install latest
+          TERRAFORM_VERSION=$(curl --silent "https://api.github.com/repos/hashicorp/terraform/releases" | jq -r '[.[] | select(.prerelease == false and .draft == false)][0].tag_name')
+          tenv terraform install "$TERRAFORM_VERSION"
+          TERRAGRUNT_VERSION=$(curl --silent "https://api.github.com/repos/gruntwork-io/terragrunt/releases" | jq -r '[.[] | select(.prerelease == false and .draft == false)][0].tag_name')
+          tenv terragrunt install "$TERRAGRUNT_VERSION"
           tenv update-path
       - name: terraform fmt of directory ${{ inputs.modules_path }}
         run: terraform fmt -check -recursive -diff ${{ inputs.modules_path }}
