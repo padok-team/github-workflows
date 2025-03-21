@@ -16,6 +16,9 @@ on:
       checkov_skip_path:
         required: false
         type: string
+      checkov_skip_check:
+        required: false
+        type: string
       checkov_baseline:
         required: false
         type: string
@@ -63,4 +66,5 @@ jobs:
           download_external_modules: false
           quiet: true
           skip_path: ${{ inputs.checkov_skip_path }}
+          skip_check: ${{ inputs.checkov_skip_check }}
           baseline: ${{ inputs.checkov_baseline }}
