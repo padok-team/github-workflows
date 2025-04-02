@@ -31,7 +31,7 @@ jobs:
       GITHUB_ACTIONS: true
     steps:
       - name: checkout
-        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Setup TF and TG (via tenv)
         run: |
           VERSION=$(curl --silent https://api.github.com/repos/tofuutils/tenv/releases/latest | jq -r .tag_name)
@@ -57,7 +57,7 @@ jobs:
     if: inputs.checkov_enabled
     steps:
       - name: checkout
-        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: checkov of ${{ inputs.modules_path }}
         uses: bridgecrewio/checkov-action@master
         with:
