@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.6.0](https://github.com/padok-team/github-workflows/compare/v1.5.1...v1.6.0) (2025-04-02)
+
+
+### Features
+
+* allow user to specify a list of checkov checks to be ignored ([4d39359](https://github.com/padok-team/github-workflows/commit/4d393590802c637f541833592199410e6a2217f6))
+
+
+### Bug Fixes
+
+* **deps:** update padok-team/guacamole-action action to v1.3.2 ([80322d5](https://github.com/padok-team/github-workflows/commit/80322d57db24caace597a0431a31e13df4d54c7a))
+* **tg-check:** add layers and modules path as input ([7b95e33](https://github.com/padok-team/github-workflows/commit/7b95e33c211222a6a2f1faae9c5843625d9c2a2f))
+* **tg-check:** remove default workdir ([c8cac45](https://github.com/padok-team/github-workflows/commit/c8cac45599300bbc24cb3b66b7f28f965e680fbc))
+* **tg-check:** remove layer_path var ([586cb3a](https://github.com/padok-team/github-workflows/commit/586cb3a4bc0f300e4c6a232a9b723889127a1b75))
+* **tg-quality:** get latest stable versions for terraform and terragrunt ([b65959d](https://github.com/padok-team/github-workflows/commit/b65959d8552b227bbfd572b7c465458475869721))
+
 ## [1.5.1](https://github.com/padok-team/github-workflows/compare/v1.5.0...v1.5.1) (2025-01-08)
 
 
