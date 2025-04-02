@@ -48,7 +48,7 @@ jobs:
         run: terragrunt hclfmt --check --diff ${{ inputs.workdir }}
       - name: guacamole code quality checks
         id: guacamole
-        uses: padok-team/guacamole-action@1cd4678ecf3f391ec25980769f1565ddd5cc6a4c # v1.3.1
+        uses: padok-team/guacamole-action@8262509d278c5e4d2a1e35142dc296c7d938364b # v1.3.2
         with:
           path: ${{ inputs.workdir }}
           verbose: true
