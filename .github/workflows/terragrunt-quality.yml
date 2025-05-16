@@ -9,6 +9,10 @@ on:
         required: false
         type: string
         default: modules
+      module_check_enabled:
+        required: false
+        type: boolean
+        default: true
       checkov_enabled:
         required: false
         type: boolean
@@ -44,6 +48,7 @@ jobs:
           tenv update-path
       - name: terraform fmt of directory ${{ inputs.modules_path }}
         run: terraform fmt -check -recursive -diff ${{ inputs.modules_path }}
+        if: ${{ !inputs.module_check_enabled }}
       - name: terragrunt fmt of directory ${{ inputs.workdir }}
         run: terragrunt hclfmt --check --diff ${{ inputs.workdir }}
       - name: guacamole code quality checks
