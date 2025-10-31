@@ -45,7 +45,7 @@ jobs:
       - name: terraform fmt of directory ${{ inputs.modules_path }}
         run: terraform fmt -check -recursive -diff ${{ inputs.modules_path }}
       - name: terragrunt fmt of directory ${{ inputs.workdir }}
-        run: terragrunt hclfmt --check --diff ${{ inputs.workdir }}
+        run: terragrunt hcl format --check --diff ${{ inputs.workdir }}
       - name: guacamole code quality checks
         id: guacamole
         uses: padok-team/guacamole-action@8262509d278c5e4d2a1e35142dc296c7d938364b # v1.3.2
