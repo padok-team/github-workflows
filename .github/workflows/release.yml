@@ -20,7 +20,7 @@ jobs:
         with:
           release-type: ${{ inputs.release-type }}
       # See https://github.com/google-github-actions/release-please-action#creating-majorminor-tags
-      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         if: inputs.update-major-minor-tags
       - name: Tag major and minor versions
         if: inputs.update-major-minor-tags && steps.release.outputs.release_created
